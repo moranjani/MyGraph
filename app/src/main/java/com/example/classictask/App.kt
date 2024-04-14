@@ -1,4 +1,4 @@
-package com.example.mygraph
+package com.example.classictask
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp

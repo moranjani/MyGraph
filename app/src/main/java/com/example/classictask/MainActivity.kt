@@ -1,8 +1,8 @@
-package com.example.mygraph
+package com.example.classictask
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mygraph.databinding.ActivityMainBinding
+import com.example.classictask.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

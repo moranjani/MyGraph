@@ -1,4 +1,4 @@
-package com.example.mygraph.service
+package com.example.classictask.service
 
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow

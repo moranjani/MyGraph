@@ -1,8 +1,8 @@
-package com.example.mygraph
+package com.example.classictask
 
-import com.example.mygraph.service.IRandomService
-import com.example.mygraph.service.RandomApi
-import com.example.mygraph.service.RandomService
+import com.example.classictask.service.IRandomService
+import com.example.classictask.service.RandomApi
+import com.example.classictask.service.RandomService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -13,6 +13,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MyGraph"
+rootProject.name = "ClassicTask"
 include(":app")
  

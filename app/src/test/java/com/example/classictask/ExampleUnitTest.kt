@@ -1,4 +1,4 @@
-package com.example.mygraph
+package com.example.classictask
 
 import org.junit.Test
 

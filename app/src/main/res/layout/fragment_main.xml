@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.main.MainFragment">
+    tools:context="com.example.classictask.ui.main.MainFragment">
 
     <Button
-        android:id="@+id/startRunning"
+        android:id="@+id/addElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/start"
+        android:text="@string/add"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,16 +24,17 @@
         android:layout_height="wrap_content"
         android:text="@string/stop"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/startRunning"
+        app:layout_constraintStart_toEndOf="@+id/addElement"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.robinhood.spark.SparkView
-        android:id="@+id/spark_view"
-        android:layout_width="411dp"
-        android:layout_height="731dp"
-        app:spark_lineColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/startRunning"
-        app:layout_constraintStart_toStartOf="parent"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addElement" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
