@@ -1,5 +1,7 @@
 package com.example.classictask.ui.main
 
+import android.content.ContentValues.TAG
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +15,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.buffer
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
@@ -32,14 +36,15 @@ class MainViewModel @Inject constructor(
 
 
     private val dataByClickList = mutableListOf<Int>()
-    private val _dataByClick: MutableLiveData<List<Int>> = MutableLiveData<List<Int>>().apply {
-        value = listOf()
-
-    }
+    private val _dataByClick: MutableLiveData<List<Int>> = MutableLiveData<List<Int>>()
+        .apply {
+            value = emptyList()
+        }
     val dataByClick: LiveData<List<Int>> = _dataByClick
 
 
     private var job: Job? = null
+    private val mutex = Mutex()
 
 
 
@@ -50,8 +55,15 @@ class MainViewModel @Inject constructor(
     }
     private suspend fun addDataToList() {
         withContext(Dispatchers.IO) {
-            dataByClickList.add(service.fetchRandomNumber())
-            _dataByClick.postValue(dataByClickList)
+            mutex.withLock {
+                try {
+                    val randomNumber = service.fetchRandomNumber()
+                    dataByClickList.add(randomNumber)
+                    _dataByClick.postValue(dataByClickList)
+                } catch (e: Exception) {
+                    Log.e(TAG, "Error fetching random number: ${e.message}", e)
+                }
+            }
         }
     }
 

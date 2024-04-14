@@ -19,7 +19,7 @@ class MainFragment : Fragment() {
     private lateinit var binding: FragmentMainBinding
     private lateinit var adapter: CustomAdapter
     private val viewModel: MainViewModel by viewModels()
-    private var dataList: List<Int> = mutableListOf()
+    private var dataList: List<Int> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,7 +50,7 @@ class MainFragment : Fragment() {
 
         viewModel.dataByClick.observe(viewLifecycleOwner) {list ->
             adapter.updateDataList(list)
-            adapter.notifyDataSetChanged()
+            adapter.notifyItemInserted(list.size - 1)
         }
 
     }
